@@ -41,10 +41,12 @@ module.exports = function () {
 
     // Eliminar productos
     router.delete('/productos/:idProducto', productosController.eliminarProducto);
-    
+    // busqueda productos
+    router.post('/productos/busqueda/:query', productosController.busquedaProducto);
+
     /*** PEDIDOS */
     // Agrega nuevos pedidos
-    router.post('/pedidos', pedidosController.nuevoPedido);
+    router.post('/pedidos/nuevo/:idUsuario', pedidosController.nuevoPedido);
 
     // muestra los pedidos
     router.get('/pedidos', pedidosController.mostrarPedidos);
@@ -52,5 +54,11 @@ module.exports = function () {
     // Mostrar un pedido por su id
     router.get('/pedidos/:idPedido', pedidosController.mostrarPedido );
 
+    // Actualizar pedido 
+    router.put('pedido/:idPedido', pedidosController.actualizarPedido);
+    
+    // Eliminar pedido
+    router.delete('pedido/:idPedido', pedidosController.eliminarPedido);
+    
     return router;
 };
